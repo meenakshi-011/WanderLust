@@ -1,0 +1,153 @@
+const samplelistings  = [
+    
+  {
+    title: "Cozy 2BHK Apartment in Andheri",
+    description: "A well-furnished 2BHK apartment with all modern amenities and 24/7 security. Perfect for small families or working professionals.",
+    price: 45000,
+    location: "Andheri West, Mumbai",
+    country: "India",
+    image:"https://images.unsplash.com/photo-1577962224182-d9e092fa4740?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Spacious Office Space in Noida Sector 63",
+    description: "Furnished office space ideal for startups or small businesses. Includes 2 meeting rooms, pantry, and parking.",
+    price: 80000,
+    location: "Sector 63, Noida",
+    country: "Dubai",
+    image: "https://images.unsplash.com/photo-1720609349380-2055da955df3?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Luxury Villa with Private Pool",
+    description: "This 4BHK villa features a private pool, garden, and modern interiors. Located in a serene neighborhood close to the beach.",
+    price: 150000,
+    location: "Candolim, Goa",
+    country: "United State",
+    image: "https://images.unsplash.com/photo-1744448365250-9b6aa1a7e4a3?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "1BHK Budget Flat for Rent",
+    description: "Affordable 1BHK flat near metro station. Semi-furnished with good ventilation and natural light.",
+    price: 18000,
+    location: "Navi Mumbai",
+    country: "London",
+    image: "https://images.unsplash.com/photo-1709904702832-fdc64ad1c375?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Retail Space on Main Road",
+    description: "Ground floor retail unit with high footfall. Best suited for cafes, salons, or boutiques.",
+    price: 95000,
+    location: "MG Road, Bengaluru",
+    country: "Africa",
+    image: "https://images.unsplash.com/photo-1674286388329-837db73581c3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+
+  {
+    title: "Seaside Cottage in Goa",
+    description: "Relaxing beachside stay with all modern amenities.",
+    image: "https://images.unsplash.com/photo-1687698978332-e89e40b1a616?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Goa",
+  },
+  {
+    title: "Mountain View Home in Manali",
+    description: "Cozy home with stunning mountain views.",
+    image: "https://plus.unsplash.com/premium_photo-1675448891151-5fbb19c7d80c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 6000,
+    location: "Manali",
+  },
+  
+  {
+    title: "Chic Apartment in Bandra West",
+    description: "Trendy 1BHK apartment with vibrant interiors and balcony view.",
+    image: "https://images.unsplash.com/photo-1629228785051-070c508c7311?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 18000,
+    location: "Bandra West, Mumbai",
+  },
+  {
+    title: "Peaceful Retreat in Rishikesh",
+    description: "Scenic 2BHK home near Ganga with meditation garden.",
+    image: "https://images.unsplash.com/photo-1668044616564-6a9a4561108a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 9000,
+    location: "Rishikesh, Uttarakhand",
+  },
+  {
+    title: "Techie Studio Near Bengaluru IT Hub",
+    description: "Compact studio apartment perfect for working professionals.",
+    image: "https://images.unsplash.com/photo-1569052915035-7d62667657f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 13000,
+    location: "Electronic City, Bengaluru",
+  },
+  {
+    title: "Luxury Penthouse in Gurgaon",
+    description: "5-star penthouse with private terrace and city views.",
+    image: "https://plus.unsplash.com/premium_photo-1693493439354-0c64d4a49d67?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 45000,
+    location: "DLF Phase 5, Gurgaon",
+  },
+  
+  {
+    title: "comfortable Apartment in Delhi",
+    description: "Trendy 1BHK apartment with vibrant interiors and balcony view.",
+    image: "https://plus.unsplash.com/premium_photo-1661963646937-1566cbb38d34?q=80&w=1387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 18000,
+    location: "Bandra West, Mumbai",
+  },
+  {
+    title: "Shimla beautiful Resort",
+    description: "Scenic 2BHK home near Ganga with meditation garden.",
+    image: "https://plus.unsplash.com/premium_photo-1661962739798-0af59dc30d14?q=80&w=1129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 9000,
+    location: "Rishikesh, Uttarakhand",
+  },
+  {
+    title: "Bali luxery apartment ",
+    description: "Compact studio apartment perfect for working professionals.",
+    image: "https://images.unsplash.com/photo-1687949395814-84675a8042f3?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price:30000,
+    location: "Electronic City, Bengaluru",
+  },
+  
+  {
+    title: "Hilltop Cottage in Mussoorie",
+    description: "A cozy retreat with panoramic views and fireplace.",
+    image: "https://images.unsplash.com/photo-1674000385847-0ff80f5495ec?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price:50000,
+    location: "Mussoorie, Uttarakhand",
+  },
+  {
+    title: "Modern Studio in Powai",
+    description: "Smart-tech equipped studio near Hiranandani complex.",
+    image: "https://images.unsplash.com/photo-1655731976375-572490707000?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 15500,
+    location: "Powai, Mumbai",
+  },
+  {
+    title: "Rustic Villa in Udaipur",
+    description: "Lakeside villa with vintage interiors and garden courtyard.",
+    image: "https://images.unsplash.com/photo-1682414181267-81f69b689937?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price:40000,
+    location: "Fateh Sagar, Udaipur",
+  },
+  {
+    title: "Budget PG in Delhi for Students",
+    description: "Affordable boys PG near metro station with Wi-Fi & meals.",
+    image: "https://plus.unsplash.com/premium_photo-1724788728091-693a13c55af0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price:20000,
+    location: "Mukherjee Nagar, Delhi",
+  },
+  {
+    title: "Seaview Flat in Marine Drive",
+    description: "2BHK flat with uninterrupted ocean view and French windows.",
+    image: "https://images.unsplash.com/photo-1699154581541-4a2b1699553b?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 38000,
+    location: "Marine Drive, Mumbai",
+  },
+  {
+    title: "Compact Office Space in Hyderabad",
+    description: "Ideal for startups, fully furnished with 24/7 access.",
+    image: "https://plus.unsplash.com/premium_photo-1661958068511-94e74df3a799?q=80&w=1187&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 80000,
+    location:"hyederabad bus station",
+  },
+]
+
+module.exports = { data:samplelistings};
