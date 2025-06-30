@@ -1,7 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listing");
+const {listingSchema, reviewSchema} = require("../schema.js");
 
+const validateListing = ( req,res,next) => {
+   let {error} = listingSchema.validate(req.body);
+   if  (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400,result.errMsg);
+   } else {
+    next();
+   }
+ };
 
 
 //Index Route
@@ -24,12 +34,17 @@ router.get("/new", (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const listing = await Listing.findById(id).populate("reviews");
+  if(!listing) {
+    req.flash("error", "Listing you requested for does not exist!");
+    res.redirect("/listings");
+  }
   res.render("listings/show.ejs", { listing });
 });
 
 // Create route 
-router.post("/",  async (req, res, next) => {
+router.post("/login",  async (req, res, next) => {
     if(!req.isAuthenticated()) {
+      req.session.redirectUrl = req.originalUrl;
         req.flash("error", "you must be logged in to create listing");
       return res.redirect("/login");
     }
@@ -66,6 +81,8 @@ router.delete("/:id", async (req, res) => {
     }
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
+  console.log(deletedListing);
+  req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
 });
 
