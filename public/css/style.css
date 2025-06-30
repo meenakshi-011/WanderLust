@@ -86,3 +86,9 @@
     padding-left: 0;
     padding-left: 0;
 }
+.alert {
+    position: relative;
+    z-index: 1050; /* High enough to show above other content */
+    margin: 1rem auto;
+    max-width: 600px;
+}

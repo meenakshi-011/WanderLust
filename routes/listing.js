@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listing");
 const {listingSchema, reviewSchema} = require("../schema.js");
-
 const validateListing = ( req,res,next) => {
    let {error} = listingSchema.validate(req.body);
    if  (error) {
@@ -26,7 +25,7 @@ router.get("/new", (req, res) => {
         req.flash("error", "you must be logged in to create listing");
         return res.redirect("/login");
     }
-  res.render("listings/new.ejs");
+  res.render("listings/new.ejs"); 
 });
 
 
@@ -44,12 +43,12 @@ router.get("/:id", async (req, res) => {
 // Create route 
 router.post("/login",  async (req, res, next) => {
     if(!req.isAuthenticated()) {
-      req.session.redirectUrl = req.originalUrl;
         req.flash("error", "you must be logged in to create listing");
       return res.redirect("/login");
     }
   const newListing = new Listing(req.body.listing);
   await newListing.save();
+  req.flash("success", "New Listing is Created!");
   res.redirect("/listings");
 });
 // edit route
@@ -60,12 +59,16 @@ router.get("/:id/edit", async (req, res) => {
     }
   let { id } = req.params;
   const listing = await Listing.findById(id);
+  if(!listing) {
+    req.flash("error", "Listing you requested for does not exist!");
+    res.redirect("/listings");
+  }
   res.render("listings/edit.ejs", { listing });
 });
 //update Route
 router.put("/:id", async (req, res) => {
     if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to create listing");
+        req.flash("error", "you must be logged in to update  listing");
       return res.redirect("/login");
     }
   let { id } = req.params;
@@ -76,7 +79,7 @@ router.put("/:id", async (req, res) => {
 //Delete Route
 router.delete("/:id", async (req, res) => {
     if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to create listing");
+        req.flash("error", "you must be logged in to delete listing");
       return res.redirect("/login");
     }
   let { id } = req.params;

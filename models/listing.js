@@ -25,6 +25,7 @@ const listingSchema = new Schema({
         ref: "Review"
     }
    ],
+   
 });
 const Listing = mongoose.model("Listing",listingSchema);
 module.exports = Listing;

@@ -1,9 +1,58 @@
-<% layout("/layouts/boilerplate") %> 
-        <h3>All Listings</h3>
-        <!-- <form method="GET" action="/listings/new">
-            <button>Create New Listing</button>
-        </form> -->
-          <div class="row row-cols-lg-3  row-cols-md-3 row-cols-sm-1">
+<% layout("/layouts/boilerplate") %> <%= success %>
+       
+       <style>
+       #filters {
+        display: flex;
+        flex-wrap:wrap;
+       }
+       .filter {
+        text-align:center;
+        margin-right: 2rem;
+        margin-top: 2 rem;
+        opacity: 0.7;
+       }
+       .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+       }
+        </style>
+
+
+        <div id="filters">
+          <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+          </div>
+          <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+          </div>
+          <div class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>iconic cities</p>
+          </div>
+          <div class="filter">
+            <div><i class="fa-solid fa-mountain "></i></div>
+            <p>Mountains</p>
+          </div>
+          <div class="filter">
+            <div><i class="fa-solid fa-fort-awesome "></i></div>
+            <p>Castles</p>
+          </div>
+          <div class="filter">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+          </div>
+          <div class="filter">
+            <div><i class="fa-solid fa-campground "></i></div>
+            <p>Camping</p>
+          </div>
+                    <div class="filter">
+            <div><i class="fa-solid fa-cow "></i></div>
+            <p>Farms</p>
+          </div>
+          
+          <div class="row row-cols-lg-3  row-cols-md-3 row-cols-sm-1 mt-3">
                             <%for (let listing of alllistings) { %>
                               <a href="/listings/<%= listing._id %>">
                                         <div class="card col listing-card">
