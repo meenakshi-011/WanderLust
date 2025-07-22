@@ -61,12 +61,13 @@ app.use((req, res, next) => {
 
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
+
+
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
 app.use("/", userRouter);
-
-
-
-
- 
 
 
 
