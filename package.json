@@ -23,8 +23,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node app.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/meenakshi-011/WanderLust.git"
@@ -36,8 +36,5 @@
     "url": "https://github.com/meenakshi-011/WanderLust/issues"
   },
   "homepage": "https://github.com/meenakshi-011/WanderLust#readme",
-  "description": "",
-  "devDependencies": {
-    "prettier": "^3.6.2"
-  }
+  "description": ""
 }
