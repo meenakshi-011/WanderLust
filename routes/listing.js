@@ -25,7 +25,6 @@ router.get("/new", (req, res) => {
         req.flash("error", "you must be logged in to create listing");
         return res.redirect("/login");
     }
-  res.render("listings/new.ejs"); 
 });
 
 
@@ -40,48 +39,29 @@ router.get("/:id", async (req, res) => {
   res.render("listings/show.ejs", { listing });
 });
 
-// Create route 
-router.post("/login",  async (req, res, next) => {
     if(!req.isAuthenticated()) {
         req.flash("error", "you must be logged in to create listing");
       return res.redirect("/login");
     }
-  const newListing = new Listing(req.body.listing);
   await newListing.save();
   req.flash("success", "New Listing is Created!");
   res.redirect("/listings");
 });
 // edit route
-router.get("/:id/edit", async (req, res) => {
-    if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to edit listing");
-      return res.redirect("/login");
-    }
   let { id } = req.params;
   const listing = await Listing.findById(id);
   if(!listing) {
     req.flash("error", "Listing you requested for does not exist!");
-    res.redirect("/listings");
   }
   res.render("listings/edit.ejs", { listing });
 });
 //update Route
-router.put("/:id", async (req, res) => {
-    if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to update  listing");
-      return res.redirect("/login");
-    }
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
 });
 
 //Delete Route
-router.delete("/:id", async (req, res) => {
-    if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to delete listing");
-      return res.redirect("/login");
-    }
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
