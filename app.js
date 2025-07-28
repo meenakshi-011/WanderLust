@@ -63,6 +63,11 @@ app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
 app.use("/", userRouter);
 
+// <----- TO REDIRECT TO '/LISTINGS' ROUTE WHEN A REQUEST IS SENT TO '/' (HOME ROUTE) AS HOMEPAGE OF WEBSITE IS AT '/LISTINGS' ----->
+app.get('/', (req, res) => {
+  res.redirect('/listings');
+});
+
 
 
 
