@@ -14,6 +14,10 @@
     color:#222222 !important;
 }
 /* Footer */
+footer{
+    width:100%;
+    margin:0;
+}
 .f-info-links a {
  text-decoration: none;
  color:#222222;
@@ -30,7 +34,6 @@
 }
 .f-info-socials {
     width:100%
-    vert
 }
 .f-info-socials i {
     font-size: 1.2rem;
