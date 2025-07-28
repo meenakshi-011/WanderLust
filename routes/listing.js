@@ -14,10 +14,30 @@ const validateListing = ( req,res,next) => {
 
 
 //Index Route
+// Index Route with Filtering and Sorting
 router.get("/", async (req, res) => {
-  const alllistings = await Listing.find({});
-  res.render("listings/index", { alllistings });
+  const { region, topic, sort } = req.query;
+
+  const filter = {};
+  if (region) filter.region = region;
+  if (topic) filter.topic = topic;
+
+  // Default sorting by latest (newest first)
+  let sortOption = { createdAt: -1 };
+
+  if (sort === "popular") sortOption = { views: -1 };        // Ensure "views" exists in schema
+  if (sort === "recommended") sortOption = { rating: -1 };    // Ensure "rating" exists in schema
+
+  try {
+    const alllistings = await Listing.find(filter).sort(sortOption);
+    res.render("listings/index", { alllistings });
+  } catch (e) {
+    console.error("Error in filtering:", e);
+    req.flash("error", "Could not fetch filtered listings.");
+    res.redirect("/listings");
+  }
 });
+
 
 //New Route
 router.get("/new", (req, res) => {
