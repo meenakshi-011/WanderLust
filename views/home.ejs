@@ -1,0 +1,16 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-5">
+  <% if (!currUser) { %>
+    <h1 class="text-center">Welcome to WanderLust ✈️</h1>
+    <p class="text-center">Join the community and explore beautiful places to stay.</p>
+    <div class="text-center mt-4">
+      <a href="/signup" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+  <% } else { %>
+    <h1 class="text-center">Welcome back, <%= currUser.username %>!</h1>
+    <div class="text-center mt-4">
+      <a href="/listings" class="btn btn-success btn-lg">Explore Listings</a>
+    </div>
+  <% } %>
+</div>
