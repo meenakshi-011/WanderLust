@@ -36,7 +36,7 @@ The following actions are **not tolerated**:
 ## 🙋 Reporting & Enforcement
 
 If you experience or witness a violation of this Code of Conduct, please report it.
-🔒 All reports will be handled confidentially by the project maintainers.
+All reports will be handled confidentially by the project maintainers.
 
 ### ⚖️ Possible Enforcement Actions:
 
