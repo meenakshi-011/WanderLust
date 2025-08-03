@@ -66,11 +66,14 @@ app.get("/", (req, res) => {
   res.redirect("/listings");
 });
 
-app.use("/listings",listingsRouter);
-app.use("/listings/:id/reviews",reviewsRouter);
+// Register routers in order
+app.use("/listings", listingsRouter);
+app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/bookmarks", bookmarkRoutes);
-app.use("/", userRouter);
+app.use("/", userRouter); // this should be last
 
+
+// ✅ Add this route to fix "Cannot GET /"
 
 app.use((err, req, res, next) => {
   const { statuscode = 500, message = "something went wrong" } = err;
