@@ -1,84 +1,84 @@
 <% layout("/layouts/boilerplate") %> <%= success %>
-       
-       <style>
-       #filters {
-        display: flex;
-        flex-wrap:wrap;
-       }
-       .filter {
-        text-align:center;
-        margin-right: 2rem;
-        margin-top: 2 rem;
-        opacity: 0.7;
-       }
-       .filter:hover {
-        opacity: 1;
-        cursor: pointer;
-       }
-        </style>
 
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+</style>
 
-        <div id="filters">
-          <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
+<!-- Filters Form -->
+<form method="GET" action="/listings" class="d-flex flex-wrap gap-2 mb-4">
+  <select name="region" class="form-select w-auto">
+    <option value="">All Regions</option>
+    <option value="Europe">Europe</option>
+    <option value="Asia">Asia</option>
+    <option value="India">India</option>
+  </select>
+
+  <select name="topic" class="form-select w-auto">
+    <option value="">All Topics</option>
+    <option value="Camping">Camping</option>
+    <option value="Mountains">Mountains</option>
+    <option value="Rooms">Rooms</option>
+    <option value="Castles">Castles</option>
+  </select>
+
+  <select name="sort" class="form-select w-auto">
+    <option value="latest">Latest</option>
+    <option value="popular">Popular</option>
+    <option value="recommended">Recommended</option>
+  </select>
+
+  <button type="submit" class="btn btn-primary">Apply Filters</button>
+</form>
+
+<!-- Listings Grid -->
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
+  <% for (let listing of alllistings) { %>
+    <div class="col mb-4">
+      <div class="card listing-card h-100 position-relative">
+        <a href="/listings/<%= listing._id %>" style="text-decoration: none; color: inherit;">
+          <img src="<%- listing.image %>" class="card-img-top" alt="listing_image" style="height:20rem; object-fit:cover;">
+          <div class="card-body">
+            <p class="card-text">
+              <%= listing.title %> <br>
+              <% if (listing.price !== undefined && listing.price !== null) { %>
+                &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+              <% } else { %>
+                Price not available
+              <% } %>
+            </p>
           </div>
-          <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
+        </a>
+        <% if (currentUser) { %>
+          <div class="position-absolute top-0 end-0 m-2">
+            <form method="POST" action="/bookmarks/<%= listing._id %>" style="display: inline;">
+              <% if (currentUser.bookmarks && currentUser.bookmarks.includes(listing._id.toString())) { %>
+                <button type="submit" formaction="/bookmarks/<%= listing._id %>?_method=DELETE" 
+                        class="btn btn-sm btn-light border-0" style="background: rgba(255,255,255,0.9);">
+                  ❤️
+                </button>
+              <% } else { %>
+                <button type="submit" class="btn btn-sm btn-light border-0" style="background: rgba(255,255,255,0.9);">
+                  🤍
+                </button>
+              <% } %>
+            </form>
           </div>
-          <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <p>iconic cities</p>
-          </div>
-          <div class="filter">
-            <div><i class="fa-solid fa-mountain "></i></div>
-            <p>Mountains</p>
-          </div>
-          <div class="filter">
-            <div><i class="fa-solid fa-fort-awesome "></i></div>
-            <p>Castles</p>
-          </div>
-          <div class="filter">
-            <div><i class="fa-solid fa-snowflake"></i></div>
-            <p>Arctic</p>
-          </div>
-          <div class="filter">
-            <div><i class="fa-solid fa-campground "></i></div>
-            <p>Camping</p>
-          </div>
-                    <div class="filter">
-            <div><i class="fa-solid fa-cow "></i></div>
-            <p>Farms</p>
-          </div>
-          
-          <div class="row row-cols-lg-3  row-cols-md-3 row-cols-sm-1 mt-3">
-                            <%for (let listing of alllistings) { %>
-                              <div class="card col listing-card position-relative">
-                                <a href="/listings/<%= listing._id %>">
-                                  <img src="<%- listing.image %>" class="card-img-top" alt="listing_image"  style="height:20rem">
-                                  <div class="card-body">
-                                    <p class="card-text">
-                                         <%= listing.title %> <br>
-                                           &#8377;<%= listing.price.toLocaleString("en-IN") %> /night</p>
-                                  </div>
-                                </a>
-                                <% if (currentUser) { %>
-                                  <div class="position-absolute top-0 end-0 m-2">
-                                    <form method="POST" action="/bookmarks/<%= listing._id %>" style="display: inline;">
-                                      <% if (currentUser.bookmarks && currentUser.bookmarks.includes(listing._id.toString())) { %>
-                                        <button type="submit" formaction="/bookmarks/<%= listing._id %>?_method=DELETE" 
-                                                class="btn btn-sm btn-light border-0" style="background: rgba(255,255,255,0.9);">
-                                          ❤️
-                                        </button>
-                                      <% } else { %>
-                                        <button type="submit" class="btn btn-sm btn-light border-0" style="background: rgba(255,255,255,0.9);">
-                                          🤍
-                                        </button>
-                                      <% } %>
-                                    </form>
-                                  </div>
-                                <% } %>
-                              </div>
-<% } %>
+        <% } %>
+      </div>
+    </div>
+  <% } %>
+</div>
     
