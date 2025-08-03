@@ -1,9 +1,25 @@
 <% layout("/layouts/boilerplate") %>
     <div class="row  mt-3">
-        <div class="col-8 offset-3">
+        <div class="col-8 offset-3 d-flex justify-content-between align-items-center">
             <h3>
                 <%= listing.title %>
             </h3>
+            <% if (currentUser) { %>
+                <div>
+                    <form method="POST" action="/bookmarks/<%= listing._id %>" style="display: inline;">
+                        <% if (currentUser.bookmarks && currentUser.bookmarks.includes(listing._id.toString())) { %>
+                            <button type="submit" formaction="/bookmarks/<%= listing._id %>?_method=DELETE" 
+                                    class="btn btn-outline-danger">
+                                ❤️ Remove from Bookmarks
+                            </button>
+                        <% } else { %>
+                            <button type="submit" class="btn btn-outline-primary">
+                                🤍 Add to Bookmarks
+                            </button>
+                        <% } %>
+                    </form>
+                </div>
+            <% } %>
         </div>
         <div class="card col-6 offset-3 show-card  listing-card">
             <img src="<%= listing.image %>>" class="card-img-top show-img" alt="listing_image" />
