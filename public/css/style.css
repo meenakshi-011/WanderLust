@@ -92,3 +92,41 @@
     margin: 1rem auto;
     max-width: 600px;
 }
+/* Testimonial Section */
+.testimonial-section {
+    background-color: #f8f9fa;
+    padding: 4rem 1rem;
+}
+
+.testimonial-section h2 {
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.testimonial-card .name {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.testimonial-card .role {
+    font-size: 0.85rem;
+    color: gray;
+}
