@@ -16,12 +16,9 @@
                                 <%= listing.country %>
                 </p>
             </div>
-        </div>
-
-
-        <br />
+             <br />
         <div class="btns">
-            <a href="/listings/<%=listing._id %>/edit" class=" btn btn-dark  col-1 offset-2 edit-btn">
+            <a href="/listings/<%=listing._id %>/edit" class=" btn btn-dark  col-1 edit-btn">
                 Edit</a>
             <div class="col-1">
                 <form method="POST" action="/listings/<%=listing._id %>?_method=DELETE">
@@ -29,6 +26,10 @@
                 </form>
             </div>
         </div>
+        </div>
+
+
+       
 
 
 
