@@ -1,5 +1,4 @@
 const samplelistings  = [
-    
   {
     title: "Cozy 2BHK Apartment in Andheri",
     description: "A well-furnished 2BHK apartment with all modern amenities and 24/7 security. Perfect for small families or working professionals.",
@@ -40,12 +39,13 @@ const samplelistings  = [
     country: "Africa",
     image: "https://images.unsplash.com/photo-1674286388329-837db73581c3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-
   {
     title: "Seaside Cottage in Goa",
     description: "Relaxing beachside stay with all modern amenities.",
-    image: "https://images.unsplash.com/photo-1687698978332-e89e40b1a616?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 25000,
     location: "Goa",
+    country: "India",
+    image: "https://images.unsplash.com/photo-1687698978332-e89e40b1a616?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     title: "Mountain View Home in Manali",
@@ -53,14 +53,15 @@ const samplelistings  = [
     image: "https://plus.unsplash.com/premium_photo-1675448891151-5fbb19c7d80c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 6000,
     location: "Manali",
+    country: "India",
   },
-  
   {
     title: "Chic Apartment in Bandra West",
     description: "Trendy 1BHK apartment with vibrant interiors and balcony view.",
     image: "https://images.unsplash.com/photo-1629228785051-070c508c7311?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 18000,
     location: "Bandra West, Mumbai",
+    country: "India",
   },
   {
     title: "Peaceful Retreat in Rishikesh",
@@ -68,6 +69,7 @@ const samplelistings  = [
     image: "https://images.unsplash.com/photo-1668044616564-6a9a4561108a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 9000,
     location: "Rishikesh, Uttarakhand",
+    country: "India",
   },
   {
     title: "Techie Studio Near Bengaluru IT Hub",
@@ -75,6 +77,7 @@ const samplelistings  = [
     image: "https://images.unsplash.com/photo-1569052915035-7d62667657f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 13000,
     location: "Electronic City, Bengaluru",
+    country: "India",
   },
   {
     title: "Luxury Penthouse in Gurgaon",
@@ -82,14 +85,15 @@ const samplelistings  = [
     image: "https://plus.unsplash.com/premium_photo-1693493439354-0c64d4a49d67?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 45000,
     location: "DLF Phase 5, Gurgaon",
+    country: "India",
   },
-  
   {
     title: "comfortable Apartment in Delhi",
     description: "Trendy 1BHK apartment with vibrant interiors and balcony view.",
     image: "https://plus.unsplash.com/premium_photo-1661963646937-1566cbb38d34?q=80&w=1387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 18000,
     location: "Bandra West, Mumbai",
+    country: "India",
   },
   {
     title: "Shimla beautiful Resort",
@@ -97,6 +101,7 @@ const samplelistings  = [
     image: "https://plus.unsplash.com/premium_photo-1661962739798-0af59dc30d14?q=80&w=1129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 9000,
     location: "Rishikesh, Uttarakhand",
+    country: "India",
   },
   {
     title: "Bali luxery apartment ",
@@ -104,14 +109,15 @@ const samplelistings  = [
     image: "https://images.unsplash.com/photo-1687949395814-84675a8042f3?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price:30000,
     location: "Electronic City, Bengaluru",
+    country: "India",
   },
-  
   {
     title: "Hilltop Cottage in Mussoorie",
     description: "A cozy retreat with panoramic views and fireplace.",
     image: "https://images.unsplash.com/photo-1674000385847-0ff80f5495ec?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price:50000,
     location: "Mussoorie, Uttarakhand",
+    country: "India",
   },
   {
     title: "Modern Studio in Powai",
@@ -119,6 +125,7 @@ const samplelistings  = [
     image: "https://images.unsplash.com/photo-1655731976375-572490707000?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 15500,
     location: "Powai, Mumbai",
+    country: "India",
   },
   {
     title: "Rustic Villa in Udaipur",
@@ -126,6 +133,7 @@ const samplelistings  = [
     image: "https://images.unsplash.com/photo-1682414181267-81f69b689937?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price:40000,
     location: "Fateh Sagar, Udaipur",
+    country: "India",
   },
   {
     title: "Budget PG in Delhi for Students",
@@ -133,6 +141,7 @@ const samplelistings  = [
     image: "https://plus.unsplash.com/premium_photo-1724788728091-693a13c55af0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price:20000,
     location: "Mukherjee Nagar, Delhi",
+    country: "India",
   },
   {
     title: "Seaview Flat in Marine Drive",
@@ -140,6 +149,7 @@ const samplelistings  = [
     image: "https://images.unsplash.com/photo-1699154581541-4a2b1699553b?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 38000,
     location: "Marine Drive, Mumbai",
+    country: "India",
   },
   {
     title: "Compact Office Space in Hyderabad",
@@ -147,6 +157,7 @@ const samplelistings  = [
     image: "https://plus.unsplash.com/premium_photo-1661958068511-94e74df3a799?q=80&w=1187&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: 80000,
     location:"hyederabad bus station",
+    country: "India",
   },
 ]
 
