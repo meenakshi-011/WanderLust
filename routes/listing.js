@@ -2,16 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Listing = require("../models/listing");
 const {listingSchema, reviewSchema} = require("../schema.js");
-const validateListing = ( req,res,next) => {
-   let {error} = listingSchema.validate(req.body);
-   if  (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400,result.errMsg);
-   } else {
-    next();
-   }
- };
-
+const { validateListing } = require("../middleware.js");
 
 //Index Route
 // Index Route with Filtering and Sorting
@@ -61,7 +52,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create route 
-router.post("/login",  async (req, res, next) => {
+router.post("/", validateListing, async (req, res, next) => {
     if(!req.isAuthenticated()) {
         req.flash("error", "you must be logged in to create listing");
       return res.redirect("/login");
@@ -86,7 +77,7 @@ router.get("/:id/edit", async (req, res) => {
   res.render("listings/edit.ejs", { listing });
 });
 //update Route
-router.put("/:id", async (req, res) => {
+router.put("/:id",validateListing, async (req, res) => {
     if(!req.isAuthenticated()) {
         req.flash("error", "you must be logged in to update  listing");
       return res.redirect("/login");

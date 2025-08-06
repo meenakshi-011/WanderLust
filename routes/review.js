@@ -3,17 +3,7 @@ const router = express.Router();
 const {reviewSchema} = require("../schema.js");
 const Review = require("../models/review.js");
 const Listing = require("../models/listing.js");
-
-const validateReview = ( req,res,next) => {
-   let {error} = reviewSchema.validate(req.body);
-   if  (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400,result.errMsg);
-   } else {
-    next();
-   }
- };
-
+const { validateReview } = require("../middleware.js");
 
 //Reviews 
 router.post("/", validateReview, async (req, res) => {
