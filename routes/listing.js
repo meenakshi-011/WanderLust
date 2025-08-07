@@ -1,17 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const wrapAsync = require("../FigletDir/utils/wrapAsync.js");
 const Listing = require("../models/listing");
+const {isLoggedIn, validateListing} = require("../middleware.js");
 const {listingSchema, reviewSchema} = require("../schema.js");
-const validateListing = ( req,res,next) => {
-   let {error} = listingSchema.validate(req.body);
-   if  (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(400,result.errMsg);
-   } else {
-    next();
-   }
- };
-
 
 //Index Route
 router.get("/", async (req, res) => {
@@ -20,7 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 //New Route
-router.get("/new", (req, res) => {
+router.get("/new",isLoggedIn,  (req, res) => {
     if(!req.isAuthenticated()) {
         req.flash("error", "you must be logged in to create listing");
         return res.redirect("/login");
@@ -52,11 +44,8 @@ router.post("/login",  async (req, res, next) => {
   res.redirect("/listings");
 });
 // edit route
-router.get("/:id/edit", async (req, res) => {
-    if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to edit listing");
-      return res.redirect("/login");
-    }
+router.get("/:id/edit",isLoggedIn,  async (req, res) => {
+    
   let { id } = req.params;
   const listing = await Listing.findById(id);
   if(!listing) {
@@ -66,22 +55,14 @@ router.get("/:id/edit", async (req, res) => {
   res.render("listings/edit.ejs", { listing });
 });
 //update Route
-router.put("/:id", async (req, res) => {
-    if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to update  listing");
-      return res.redirect("/login");
-    }
+router.put("/:id",isLoggedIn, async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
 });
 
 //Delete Route
-router.delete("/:id", async (req, res) => {
-    if(!req.isAuthenticated()) {
-        req.flash("error", "you must be logged in to delete listing");
-      return res.redirect("/login");
-    }
+router.delete("/:id",isLoggedIn, async (req, res) => {
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
