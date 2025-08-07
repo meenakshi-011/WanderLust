@@ -46,7 +46,6 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 passport.use(new LocalStrategy(User.authenticate()));
 
 
@@ -60,10 +59,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/listings",listingsRouter);
-app.use("/listings/:id/reviews",reviewsRouter);
-app.use("/", userRouter);
+// ➕ ADD THIS JUST BEFORE YOUR ROUTERS
+app.get("/", (req, res) => {
+  res.redirect("/listings");  // or res.render("home");
+});
 
+// Then register routers in order
+app.use("/listings", listingsRouter);
+app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/", userRouter); // this should be last
+
+
+// ✅ Add this route to fix "Cannot GET /"
 
 
 
@@ -81,5 +88,4 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log("server is listing to port 8080");
 });
-
 
