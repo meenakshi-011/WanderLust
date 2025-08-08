@@ -48,25 +48,39 @@
 <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
   <% for (let listing of alllistings) { %>
     <div class="col mb-4">
-      <a href="/listings/<%= listing._id %>" style="text-decoration: none; color: inherit;">
-        <div class="card listing-card h-100">
+      <div class="card listing-card h-100 position-relative">
+        <a href="/listings/<%= listing._id %>" style="text-decoration: none; color: inherit;">
           <img src="<%- listing.image %>" class="card-img-top" alt="listing_image" style="height:20rem; object-fit:cover;">
           <div class="card-body">
-          <p class="card-text">
-  <%= listing.title %> <br>
-  <% if (listing.price !== undefined && listing.price !== null) { %>
-    &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
-  <% } else { %>
-    Price not available
-  <% } %>
-</p>
-
-
-
-
+            <p class="card-text">
+              <%= listing.title %> <br>
+              <% if (listing.price !== undefined && listing.price !== null) { %>
+                &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+              <% } else { %>
+                Price not available
+              <% } %>
+            </p>
           </div>
-        </div>
-      </a>
+        </a>
+        <% if (currentUser) { %>
+          <div class="position-absolute top-0 end-0 m-2">
+            <form method="POST" action="/bookmarks/<%= listing._id %>" style="display: inline;">
+              <% if (currentUser.bookmarks && currentUser.bookmarks.includes(listing._id.toString())) { %>
+                <button type="submit" formaction="/bookmarks/<%= listing._id %>?_method=DELETE" 
+                        class="btn btn-sm btn-light border-0" style="background: rgba(255,255,255,0.9);">
+                  ❤️
+                </button>
+              <% } else { %>
+                <button type="submit" class="btn btn-sm btn-light border-0" style="background: rgba(255,255,255,0.9);">
+                  🤍
+                </button>
+              <% } %>
+            </form>
+          </div>
+        <% } %>
+      </div>
     </div>
   <% } %>
 </div>
+
+

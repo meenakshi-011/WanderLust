@@ -1,0 +1,337 @@
+<% layout("/layouts/boilerplate") %> <%= success %>
+
+<style>
+  .bookmarks-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .bookmarks-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .bookmarks-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+  }
+
+  .bookmark-card {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  .bookmark-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  .bookmark-card .card-img-top {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .bookmark-card:hover .card-img-top {
+    transform: scale(1.05);
+  }
+
+  .bookmark-card .card-body {
+    padding: 1.5rem;
+  }
+
+  .bookmark-card .card-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+
+  .bookmark-card .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+  }
+
+  .bookmark-card .location {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .bookmark-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-view {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-view:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    color: white;
+  }
+
+  .btn-remove {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-remove:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+    color: white;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 20px;
+    color: white;
+    margin: 2rem 0;
+  }
+
+  .empty-state h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .btn-explore {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid white;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-explore:hover {
+    background: white;
+    color: #f5576c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .bookmark-count {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
+
+  .filters-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+  }
+
+  .filter-btn {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    color: #6c757d;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin: 0.25rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .filter-btn:hover {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .filter-btn.active {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+  }
+
+  .bookmark-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .travel-icons {
+    font-size: 3rem;
+    margin: 1rem 0;
+    opacity: 0.7;
+  }
+</style>
+
+<!-- Hero Section -->
+<div class="bookmarks-hero">
+  <div class="container text-center">
+    <div class="bookmark-icon">❤️</div>
+    <h1>My Travel Wishlist</h1>
+    <p>Your saved destinations and dream getaways</p>
+    <% if (listings && listings.length > 0) { %>
+      <div class="bookmark-count">
+        <i class="fas fa-heart"></i> <%= listings.length %> saved <%= listings.length === 1 ? 'destination' : 'destinations' %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<div class="container">
+  <% if (listings && listings.length > 0) { %>
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <h5 class="mb-3"><i class="fas fa-filter"></i> Filter Your Bookmarks</h5>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="/bookmarks" class="filter-btn active">All</a>
+        <a href="/bookmarks?type=recent" class="filter-btn">Recently Added</a>
+        <a href="/bookmarks?type=price-low" class="filter-btn">Price: Low to High</a>
+        <a href="/bookmarks?type=price-high" class="filter-btn">Price: High to Low</a>
+        <a href="/bookmarks?type=location" class="filter-btn">By Location</a>
+      </div>
+    </div>
+
+    <!-- Bookmarks Grid -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+      <% for (let listing of listings) { %>
+        <div class="col">
+          <div class="card bookmark-card h-100">
+            <img src="<%- listing.image %>" class="card-img-top" alt="<%= listing.title %>">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= listing.title %></h5>
+              <div class="price">
+                <% if (listing.price !== undefined && listing.price !== null) { %>
+                  &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+                <% } else { %>
+                  Price not available
+                <% } %>
+              </div>
+              <div class="location">
+                <i class="fas fa-map-marker-alt"></i> <%= listing.location %>
+                <% if (listing.country) { %>
+                  , <%= listing.country %>
+                <% } %>
+              </div>
+              <div class="bookmark-actions mt-auto">
+                <a href="/listings/<%= listing._id %>" class="btn btn-view">
+                  <i class="fas fa-eye"></i> View Details
+                </a>
+                <form method="POST" action="/bookmarks/<%= listing._id %>" style="display: inline;">
+                  <button type="submit" formaction="/bookmarks/<%= listing._id %>?_method=DELETE" 
+                          class="btn btn-remove" 
+                          onclick="return confirm('Remove this destination from your wishlist?')">
+                    <i class="fas fa-heart-broken"></i> Remove
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Share Section -->
+    <div class="text-center mt-5">
+      <div class="card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border: none; border-radius: 15px;">
+        <div class="card-body">
+          <h5><i class="fas fa-share-alt"></i> Share Your Wishlist</h5>
+          <p class="mb-3">Let friends know about your dream destinations!</p>
+          <button class="btn btn-primary me-2"><i class="fab fa-facebook"></i> Share</button>
+          <button class="btn btn-info me-2"><i class="fab fa-twitter"></i> Tweet</button>
+          <button class="btn btn-success"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+        </div>
+      </div>
+    </div>
+
+  <% } else { %>
+    <!-- Empty State -->
+    <div class="empty-state">
+      <div class="travel-icons">
+        <i class="fas fa-plane"></i> <i class="fas fa-mountain"></i> <i class="fas fa-umbrella-beach"></i>
+      </div>
+      <h3>Your Wishlist is Empty</h3>
+      <p>Start exploring amazing destinations and add them to your travel wishlist!</p>
+      <a href="/listings" class="btn-explore">
+        <i class="fas fa-compass"></i> Explore Destinations
+      </a>
+    </div>
+
+    <!-- Suggested Actions -->
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card text-center h-100" style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <div class="card-body">
+            <i class="fas fa-search fa-2x text-primary mb-3"></i>
+            <h5>Discover New Places</h5>
+            <p class="text-muted">Browse through our curated collection of amazing destinations</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center h-100" style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <div class="card-body">
+            <i class="fas fa-heart fa-2x text-danger mb-3"></i>
+            <h5>Save Favorites</h5>
+            <p class="text-muted">Click the heart icon to save destinations to your wishlist</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center h-100" style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <div class="card-body">
+            <i class="fas fa-share fa-2x text-success mb-3"></i>
+            <h5>Share & Plan</h5>
+            <p class="text-muted">Share your wishlist with friends and plan trips together</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div> 

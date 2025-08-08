@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../routes/user");
+const User = require("../models/user");
 const passport = require("passport");
 const session = require("express-session");
+const { isLoggedIn } = require("../middleware");
 
 
 router.get("/signup", (req,res) => {
@@ -52,6 +53,17 @@ router.get("/logout", (req,res,next) => {
         req.flash("success","you are logged out!");
         res.redirect("/listings");
     });
+});
+
+// My Bookmarks page
+router.get('/bookmarks', isLoggedIn, async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id).populate('bookmarks');
+        res.render('users/bookmarks', { listings: user.bookmarks });
+    } catch (err) {
+        req.flash("error", "Something went wrong!");
+        res.redirect("/listings");
+    }
 });
 
 module.exports = router;

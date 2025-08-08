@@ -13,6 +13,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
 const userRouter = require("./routes/user");
 const reviewsRouter = require("./routes/review.js");
+const bookmarkRoutes = require('./routes/bookmarks');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust"; 
 
 main()                 
@@ -56,29 +57,23 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+  res.locals.currentUser = req.user;
   next();
 });
 
-// ➕ ADD THIS JUST BEFORE YOUR ROUTERS
+// Root route handler
 app.get("/", (req, res) => {
-  res.redirect("/listings");  // or res.render("home");
+  res.redirect("/listings");
 });
 
-// Then register routers in order
+// Register routers in order
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/bookmarks", bookmarkRoutes);
 app.use("/", userRouter); // this should be last
 
 
 // ✅ Add this route to fix "Cannot GET /"
-
-
-
- 
-
-
-
-
 
 app.use((err, req, res, next) => {
   const { statuscode = 500, message = "something went wrong" } = err;
