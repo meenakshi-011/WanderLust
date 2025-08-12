@@ -32,3 +32,7 @@
 | *Auth*       | Passport.js, bcrypt            |
 | *Image Upload* | Multer, Cloudinary          |
 | *Deployment* | Render (or any cloud platform) |
+
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
+
