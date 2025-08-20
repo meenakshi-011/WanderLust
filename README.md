@@ -70,7 +70,7 @@
   <b>This project is now OFFICIALLY accepted for:</b>
 </p>
 
-![GSSoC Logo]( )
+![GSSoC Logo](/WanderLust/gssoc%20logo.png)
 
 🌟 **Exciting News...**
 
@@ -145,7 +145,9 @@ npm start
 5️⃣ Access the app:
 Open `http://localhost:3000` in your browser.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+(https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 **🚀 Deployment & Hosting**
 
@@ -156,7 +158,7 @@ You can deploy the app on platforms like:
 - Heroku
 (Ensure to configure environment variables on the hosting platform)
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+(https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 **🧑‍💻 Contribution Guidelines**
 
