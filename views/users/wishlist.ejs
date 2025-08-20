@@ -1,0 +1,16 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-5">
+  <h1>My Wishlist</h1>
+  <ul class="list-group">
+    <% if (!listings || listings.length === 0) { %>
+      <li class="list-group-item">No listings saved to your wishlist yet.</li>
+    <% } else { %>
+      <% listings.forEach(function(listing) { %>
+        <li class="list-group-item">
+          <a href="/listings/<%= listing._id %>"><%= listing.title %></a>
+        </li>
+      <% }); %>
+    <% } %>
+  </ul>
+</div>
