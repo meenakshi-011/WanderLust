@@ -23,11 +23,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-  "start": "node app.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
-
-
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/meenakshi-011/WanderLust.git"
@@ -41,6 +40,7 @@
   "homepage": "https://github.com/meenakshi-011/WanderLust#readme",
   "description": "",
   "devDependencies": {
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "nodemon": "^3.0.1"
   }
 }
