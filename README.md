@@ -121,12 +121,14 @@ WanderLust/
 **⚙ Setup & Installation**
 
 1️⃣ Clone the repository:
+
 ```bash
 git clone https://github.com/meenakshi-011/WanderLust.git
 cd WanderLust
 ```
 
 2️⃣ Install dependencies:
+
 ````bash
 npm install
 ```
@@ -145,10 +147,6 @@ npm start
 5️⃣ Access the app:
 Open `http://localhost:3000` in your browser.
 
-
-
-(https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
 **🚀 Deployment & Hosting**
 
 You can deploy the app on platforms like:
@@ -157,8 +155,6 @@ You can deploy the app on platforms like:
 - Vercel (for frontend)
 - Heroku
 (Ensure to configure environment variables on the hosting platform)
-
-(https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 **🧑‍💻 Contribution Guidelines**
 
