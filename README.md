@@ -129,7 +129,7 @@ cd WanderLust
 
 2️⃣ Install dependencies:
 
-````bash
+```bash
 npm install
 ```
 
@@ -140,12 +140,15 @@ PORT=3000
 MONGO_URI=your_mongo_db_uri
 
 4️⃣ Run the application:
+
 ```bash
 npm start
 ```
 
 5️⃣ Access the app:
 Open `http://localhost:3000` in your browser.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 **🚀 Deployment & Hosting**
 
@@ -155,6 +158,8 @@ You can deploy the app on platforms like:
 - Vercel (for frontend)
 - Heroku
 (Ensure to configure environment variables on the hosting platform)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 **🧑‍💻 Contribution Guidelines**
 
