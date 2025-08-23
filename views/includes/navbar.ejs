@@ -1,51 +1,111 @@
 <style>
   .btn-search {
-   background-color: #fe424d;
-   color: #ffff;
-   border-radius: 25px;
-   padding: 0 1rem 0 1rem;
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem;
   }
   .btn-search:hover {
-    background-color: #fe424d;
-   color: #ffff;
+    background-color: #d73844;
+    color: #fff;
   }
   .btn-search i {
-    display: inline;
     margin-right: 0.5rem;
   }
   .search-inp {
     border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    padding: 0.5rem 3rem;
     font-size: 0.8rem;
+  }
+
+  /* Dark mode styles */
+  body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  body.dark-mode .navbar {
+    background-color: #1e1e1e !important;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.3s ease;
+  }
+  body.dark-mode .nav-link {
+    color: #f5f5f5 !important;
+  }
+  body.dark-mode .search-inp {
+    background-color: #333;
+    color: #f5f5f5;
+    border: none;
+  }
+  body.dark-mode .btn-search {
+    background-color: #fe424d;
   }
 </style>
 
-
-<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-lg bg-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
+
       <div class="navbar-nav ms-auto">
         <form class="d-flex" role="search">
-      <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations" aria-label="Search"/>
-      <button class="btn btn-search type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-    </form>
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations" aria-label="Search" />
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        </form>
       </div>
+
       <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="listings/new">Wanderlust your home</a>
-            <% if(!currUser) { %> 
-        <a class="nav-link active"  href="/signup"><b>Signup</b></a>
-        <a class="nav-link" href="/login"><b>Log in</b></a>
-        <% } %> <% if(currUser) { %>
-        <a class="nav-link" href="/logout"><b>Log out</b></a>
+        <a class="nav-link" href="/listings/new">Wanderlust your home</a>
+        
+        <% if (!currUser) { %> 
+          <a class="nav-link active" href="/signup"><b>Signup</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
         <% } %>
+        
+        <% if (currUser) { %>
+          <a class="nav-link" href="/logout"><b>Log out</b></a>
+        <% } %>
+      </div>
+
+      <!-- Dark Mode Toggle -->
+      <div class="ms-3">
+        <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">
+          🌙 Dark Mode
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
+<script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  // Check localStorage on page load
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  // Toggle theme on button click
+  toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "☀️ Light Mode";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙 Dark Mode";
+    }
+  });
+</script>
+
+
