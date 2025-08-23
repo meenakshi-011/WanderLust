@@ -22,10 +22,12 @@
   body.dark-mode {
     background-color: #121212;
     color: #f5f5f5;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   body.dark-mode .navbar {
     background-color: #1e1e1e !important;
     border-bottom: 1px solid #333;
+    transition: background-color 0.3s ease;
   }
   body.dark-mode .nav-link {
     color: #f5f5f5 !important;
@@ -84,11 +86,26 @@
 
 <script>
   const toggleBtn = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  // Check localStorage on page load
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  // Toggle theme on button click
   toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    toggleBtn.textContent = document.body.classList.contains("dark-mode")
-      ? "☀️ Light Mode"
-      : "🌙 Dark Mode";
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "☀️ Light Mode";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙 Dark Mode";
+    }
   });
 </script>
+
 
