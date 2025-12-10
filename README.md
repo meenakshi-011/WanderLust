@@ -22,6 +22,13 @@
 - 💬 Flash messages for feedback (success/error)
 - ⚙ Responsive UI with Bootstrap
 
+  ## Sceenshot preview
+  HOME
+  [home-page](./home.png)
+
+  listing
+  [listing-page](./liating.png)
+
 ## 🛠 Tech Stack
 
 | Technology     | Description                    |
