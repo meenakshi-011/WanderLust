@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../routes/user");
+const User = require("../models/user");
 const passport = require("passport");
 const session = require("express-session");
 
@@ -19,7 +19,7 @@ router.post("/signup", async(req,res)=>{
         if(err) {
             return next(err);
         }
-         req.flash("success", "Welcome to Wanderlust !");
+         req.flash("success", "Welcome to TripTales !");
      res.redirect("/listings");
      });
     
@@ -39,8 +39,8 @@ passport.authenticate("local", {
     failureFlash: true, 
 }),
 async (req,res) => {
-    req.flash("success","welcome back to Wanderlust!");
-    res.redirect("/listings/new");
+    req.flash("success","welcome back to TripTales!");
+    res.redirect("/listings");
 }
 );
 

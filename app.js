@@ -59,10 +59,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// ➕ ADD THIS JUST BEFORE YOUR ROUTERS
 app.get("/", (req, res) => {
-  res.redirect("/listings");  // or res.render("home");
+    res.render("home");
 });
+
+// ➕ ADD THIS JUST BEFORE YOUR ROUTERS
 
 // Then register routers in order
 app.use("/listings", listingsRouter);

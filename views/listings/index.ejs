@@ -1,6 +1,50 @@
 <% layout("/layouts/boilerplate") %>
 <%= success %>
-
+<div id="filters">
+  <div class="filter">
+    <i class="fa-solid fa-globe"></i>
+    <p>Worldwide</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-mountain-sun"></i>
+    <p>Mountains</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-campground"></i>
+    <p>Camping</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-city"></i>
+    <p>Cities</p>
+  </div>
+  <div class="filter">
+    <i class="fa-solid fa-igloo"></i>
+    <p>Unique stays</p>
+</div>
+  <div class="filter">
+    <i class="fa-solid fa-tree"></i>
+    <p>Nature</p>
+  </div>
+  <div class="filter">
+    <i class="fa-sharp fa-solid fa-umbrella-beach"></i>
+    <p>Beach</p>
+</div>
+  <div class="filter">
+    <i class="fa-solid fa-snowflake"></i>
+    <p>Winter</p>
+  </div>
+<div class="filter">
+    <i class="fa-solid fa-tree-city"></i>
+    <p>Countryside</p>
+</div>
+  <div class="filter">
+    <i class="fa-solid fa-building-columns"></i>
+    <p>Historical</p>
+</div>
+ <div class="filter">
+    <i class="fa-solid fa-water-ladder"></i>
+    <p>Lakeside</p>
+</div>
 <style>
   #filters {
     display: flex;
@@ -9,7 +53,7 @@
   .filter {
     text-align: center;
     margin-right: 2rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     opacity: 0.7;
   }
   .filter:hover {
@@ -18,31 +62,6 @@
   }
 </style>
 
-<!-- Filters Form -->
-<form method="GET" action="/listings" class="d-flex flex-wrap gap-2 mb-4">
-  <select name="region" class="form-select w-auto">
-    <option value="">All Regions</option>
-    <option value="Europe">Europe</option>
-    <option value="Asia">Asia</option>
-    <option value="India">India</option>
-  </select>
-
-  <select name="topic" class="form-select w-auto">
-    <option value="">All Topics</option>
-    <option value="Camping">Camping</option>
-    <option value="Mountains">Mountains</option>
-    <option value="Rooms">Rooms</option>
-    <option value="Castles">Castles</option>
-  </select>
-
-  <select name="sort" class="form-select w-auto">
-    <option value="latest">Latest</option>
-    <option value="popular">Popular</option>
-    <option value="recommended">Recommended</option>
-  </select>
-
-  <button type="submit" class="btn btn-primary">Apply Filters</button>
-</form>
 
 <!-- Listings Grid -->
 <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
@@ -60,13 +79,16 @@
     Price not available
   <% } %>
 </p>
-
-
-
-
-          </div>
+         </div>
         </div>
       </a>
     </div>
   <% } %>
 </div>
+
+<script>
+let taxswitch = document.getElementById('flexSwitchCheckDefault');
+taxswitch.addEventListener("click", () => {
+  console.log("toggled");
+});
+</script>
