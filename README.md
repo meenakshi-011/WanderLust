@@ -24,7 +24,7 @@
 
   ## Sceenshot preview
   HOME
-  [home-page](./home.png)
+  [home-page](./homw.png)
 
   listing
   [listing-page](./liating.png)
